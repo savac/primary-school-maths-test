@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times Tables Challenge! 🌟</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Settings Screen -->
+        <div id="settingsScreen" class="screen active">
+            <h1>🎯 Times Tables Challenge! 🎯</h1>
+            <p class="subtitle">Choose which times tables you want to practice:</p>
+
+            <div class="times-table-selector">
+                <div class="table-option" data-table="2">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table2" value="2">
+                        <label for="table2">
+                            <span class="emoji">✌️</span>
+                            <span class="number">2</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="3">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table3" value="3">
+                        <label for="table3">
+                            <span class="emoji">🎨</span>
+                            <span class="number">3</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="4">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table4" value="4">
+                        <label for="table4">
+                            <span class="emoji">🍀</span>
+                            <span class="number">4</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="5">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table5" value="5">
+                        <label for="table5">
+                            <span class="emoji">⭐</span>
+                            <span class="number">5</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="6">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table6" value="6">
+                        <label for="table6">
+                            <span class="emoji">🐝</span>
+                            <span class="number">6</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="7">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table7" value="7">
+                        <label for="table7">
+                            <span class="emoji">🌈</span>
+                            <span class="number">7</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="8">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table8" value="8">
+                        <label for="table8">
+                            <span class="emoji">🕷️</span>
+                            <span class="number">8</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="9">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table9" value="9">
+                        <label for="table9">
+                            <span class="emoji">⚽</span>
+                            <span class="number">9</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="10">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table10" value="10">
+                        <label for="table10">
+                            <span class="emoji">🔟</span>
+                            <span class="number">10</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="11">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table11" value="11">
+                        <label for="table11">
+                            <span class="emoji">🎸</span>
+                            <span class="number">11</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-option" data-table="12">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="table12" value="12">
+                        <label for="table12">
+                            <span class="emoji">🎂</span>
+                            <span class="number">12</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="problems-setting">
+                <label for="numProblems">Number of problems:</label>
+                <input type="number" id="numProblems" min="1" max="100" value="10">
+            </div>
+
+            <div class="timer-setting">
+                <div class="timer-checkbox-wrapper">
+                    <input type="checkbox" id="enableTimer">
+                    <label for="enableTimer">Enable timer:</label>
+                </div>
+                <input type="number" id="timerSeconds" min="3" max="60" value="6" disabled>
+                <span class="timer-label">seconds per problem</span>
+            </div>
+
+            <div class="timer-skip-setting">
+                <div class="timer-checkbox-wrapper">
+                    <input type="checkbox" id="autoSkip" disabled>
+                    <label for="autoSkip">Auto-skip when timer expires</label>
+                </div>
+            </div>
+
+            <button id="startButton" class="big-button">Start Challenge! 🚀</button>
+            <p class="error-message" id="selectionError"></p>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="header">
+                <button id="backButton" class="small-button">⚙️ Settings</button>
+                <div id="timerDisplay" class="timer-display hidden">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="timerValue">0</span>
+                </div>
+                <div class="score-display">
+                    <span class="score-label">Score:</span>
+                    <span id="score">0</span> / <span id="total">0</span>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-box">
+                    <div class="question" id="question">
+                        <span id="factor1">?</span> × <span id="factor2">?</span> = ?
+                    </div>
+                </div>
+
+                <div class="answer-input-wrapper">
+                    <input type="number" id="answerInput" placeholder="Type your answer..." autocomplete="off">
+                    <button id="submitButton" class="submit-button">Check ✓</button>
+                </div>
+
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <h1>🎉 Quiz Complete! 🎉</h1>
+            <div class="results-content">
+                <div class="final-score">
+                    <div class="percentage" id="percentage">0%</div>
+                    <p class="score-details">You got <span id="finalScore">0</span> out of <span
+                            id="finalTotal">0</span> correct!</p>
+                </div>
+                <div class="results-message" id="resultsMessage"></div>
+                <div class="results-buttons">
+                    <button id="tryAgainButton" class="big-button">Try Again! 🔄</button>
+                    <button id="newSettingsButton" class="big-button secondary">Change Settings ⚙️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
